@@ -49,10 +49,12 @@ def searchWindows():
     # Not completely necessary, but if u want to print which file is being readed here u have it.
     csvFile.close()
 
-    return files, dictionary
+    return
 
 
 # WindowsDictionary contains all pair of (Hex, TimesOnDocumentValues)
-files, windowsDictionary = searchWindows()
+if __name__ == "__main__":
+    searchWindows()
+
 # createCSV
 # Headers
