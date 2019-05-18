@@ -4,15 +4,15 @@ import glob
 
 
 def searchWindows():
-    route = 'c:\\windows\\system32'  # Define la ruta de búsqueda
+    route = 'c:\\'  # Define la ruta de búsqueda
     files = []  # todos los archivos
-    # , ".exe", ".drv", ".ocx"]  # Busqueda según extensión
-    posibleFiles = [".dll"]
+
+    posibleFiles = [".dll", ".exe", ".drv", ".ocx"]  # Busqueda según extensión
     # Abrir hoja de excel en modo de lectura
     csvFile = open(os.getcwd()+"/file.csv", "w")
     csvFile.write("Nombre,Tamaño (bytes)\n")  # Encabezados excel
     for posibleFile in posibleFiles:  # Para cada tipo de archivo(extensión)
-        for f in glob.glob(route+"**/*"+posibleFile, recursive=False):
+        for f in glob.glob(route+"**/*"+posibleFile, recursive=True):
             # Buscar por tipo de extensión, usamos el recursive para que se iteren dentro de las carpetas (búsqueda profunda)
             try:
                 files.append(f)  # añadir el nombre del archivo
