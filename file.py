@@ -10,7 +10,8 @@ def searchWindows():
     posibleFiles = [".dll", ".exe", ".drv", ".ocx"]  # Busqueda según extensión
     # Abrir hoja de excel en modo de lectura
     csvFile = open(os.getcwd()+"/file.csv", "w")
-    csvFile.write("Nombre,Tamaño (bytes)\n")  # Encabezados excel
+    # Encabezados excel
+    csvFile.write("Nombre,Tamaño (bytes),Valor Hexadecimal, Repeticiones\n")
     for posibleFile in posibleFiles:  # Para cada tipo de archivo(extensión)
         for f in glob.glob(route+"**/*"+posibleFile, recursive=True):
             # Buscar por tipo de extensión, usamos el recursive para que se iteren dentro de las carpetas (búsqueda profunda)
@@ -40,7 +41,7 @@ def searchWindows():
                         # si se puede convertir a hexadecimal es un valor valido
                         checkHex = int(key, 16)
                         # guardar en la tabla
-                        csvFile.write(str(key)+","+str(value)+"\n")
+                        csvFile.write(",,"+str(key)+","+str(value)+"\n")
                     except:
                         pass
                 opened.close()  # cerrar archivo leído
